@@ -1,26 +1,26 @@
 package os.lexer.automaton;
 
-import os.lexer.Constants;
-
 import org.junit.jupiter.api.Test;
-import java.util.List;
+import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AutomatonTest {
-    private static final Automaton automaton = Constants.keywordsAutomaton;
-    private static final List<String> keywords = Constants.KEYWORDS;
+    private static final String[] strings = {"string1", "str1", "string2", "str", "str2", "string"};
+    private static final Automaton automaton = new Automaton(Arrays.asList(strings));
 
     @Test
-    void isValid() {
-        for (String kw : keywords) {
-            assertTrue(automaton.isValid(kw));
+    void process() {
+        for (String str : strings) {
+            assertTrue(automaton.process(str));
         }
 
-        if (keywords.isEmpty()) {
-            return;
-        }
-        String str = keywords.get(0);
-        assertFalse(automaton.isValid(str + "a"));
-        assertFalse(automaton.isValid(str.substring(0, str.length()-1)));
+        assertFalse(automaton.process("s"));
+        assertFalse(automaton.process("st"));
+        assertFalse(automaton.process("stt"));
+        assertFalse(automaton.process("strr"));
+        assertFalse(automaton.process("str3"));
+        assertFalse(automaton.process("stri"));
+        assertFalse(automaton.process("strin"));
+        assertFalse(automaton.process("stringg"));
     }
 }

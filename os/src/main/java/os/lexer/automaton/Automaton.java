@@ -25,7 +25,7 @@ public class Automaton {
         }
     }
 
-    public boolean isValid(String string) {
+    public boolean process(String string) {
         State currentState = startState;
         for (int i = 0; i < string.length(); i++) {
             char ch = string.charAt(i);
