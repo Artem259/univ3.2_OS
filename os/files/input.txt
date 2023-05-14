@@ -1,0 +1,38 @@
+
+program LexicalTokens;
+
+var
+  x, y: integer;
+  z: real;
+
+begin
+  x := 10; { Assign 10 to variable x }
+  y := 20; { Assign 20 to variable y }
+  z := 3.14; { Assign 3.14 to variable z }
+
+  writeln('Sum:', x + y); { Display the sum of x and y }
+  writeln('Product:', x * y); { Display the product of x and y }
+  writeln('Pi:', z); { Display the value of z }
+
+  if x > y then { Check if x is greater than y }
+    writeln('x is greater than y')
+  else
+    writeln('y is greater than or equal to x');
+
+  for x := 1 to 5 do { Loop from 1 to 5 }
+    writeln('Current value of x:', x);
+
+  case x of { Select a case based on the value of x }
+    1: writeln('x is 1');
+    2: writeln('x is 2');
+    3: writeln('x is 3');
+  else
+    writeln('x is not 1, 2, or 3');
+  end;
+
+  repeat { Repeat a block of code until a condition is met }
+    x := x - 1;
+    writeln('Current value of x:', x);
+  until x = 0;
+
+end.
