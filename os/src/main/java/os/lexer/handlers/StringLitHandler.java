@@ -8,7 +8,7 @@ public class StringLitHandler extends Handler {
     private boolean inString = false;
 
     @Override
-    protected HandlingStatus appendCharQuery(char ch) {
+    protected HandlingStatus appendCharQuery(char ch) throws LexicalException {
         if (ch == '\'') {
             if (!inString) {
                 inString = true;
@@ -17,6 +17,9 @@ public class StringLitHandler extends Handler {
             return HandlingStatus.ACCEPTED;
         }
         if (inString) {
+            if (ch == '\n') {
+                throw new LexicalException("Unclosed string literal.");
+            }
             return HandlingStatus.WAITING;
         }
         return HandlingStatus.REJECTED;
@@ -24,10 +27,7 @@ public class StringLitHandler extends Handler {
 
     @Override
     protected HandlingStatus appendEOFQuery() throws LexicalException {
-        if (inString) {
-            throw new LexicalException("Unclosed string literal.");
-        }
-        return HandlingStatus.REJECTED;
+        return appendCharQuery('\n');
     }
 
     @Override

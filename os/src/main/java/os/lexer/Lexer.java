@@ -71,6 +71,7 @@ public class Lexer {
                 buffer.jump(longestTokenSize);
             }
         } catch (LexicalException e) {
+            buffer.restorePosition();
             tokens.add(new PositionedToken(e.getToken(), buffer.currentPosition()));
         }
 
