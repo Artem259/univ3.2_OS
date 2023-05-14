@@ -1,4 +1,4 @@
-package os.lexer.automaton;
+package os.lexer.handlers.automaton;
 
 import java.util.ArrayList;
 

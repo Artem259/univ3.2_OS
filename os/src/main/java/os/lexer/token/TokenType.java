@@ -1,16 +1,16 @@
-package os.lexer;
+package os.lexer.token;
 
 public enum TokenType {
-    INTEGER_LIT,
-    REAL_LIT,
-    STRING_LIT,
-
     KEYWORD,
     OPERATOR,
     PUNCTUATION,
 
     IDENTIFIER,
     COMMENT,
+
+    REAL_LIT,
+    INTEGER_LIT,
+    STRING_LIT,
 
     ERROR
 }
